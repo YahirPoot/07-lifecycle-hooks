@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-contact-page',
   imports: [],
   templateUrl: './contact-page.component.html',
-  styleUrl: './contact-page.component.css',
 })
-export class ContactPageComponent { }
+export class ContactPageComponent {
+}
