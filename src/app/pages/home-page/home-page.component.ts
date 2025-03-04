@@ -1,4 +1,5 @@
-import { afterNextRender, afterRender, Component, effect, OnChanges, OnInit } from '@angular/core';
+import { afterNextRender, afterRender, Component, effect, OnChanges, OnInit, signal } from '@angular/core';
+import { TitleComponent } from '../../components/title/title.component';
 
 const log = (...messages: string[]) => {
   console.log(
@@ -9,12 +10,27 @@ const log = (...messages: string[]) => {
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [TitleComponent],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit, OnChanges {
+  traditionalProperty = 'Angel';
+  signalProperty = signal('Angel');
+
   constructor() {
     log('Home Page Component - Constructor Called');
+    // setTimeout(() => {
+    //   console.log('Change property traditional');
+
+    // }, 2000);
+  }
+
+  changePropertyTraditional() {
+    this.traditionalProperty = 'Angel Poot';
+  }
+
+  changeSignalProperty() {
+    this.signalProperty.set('Angel Poot');
   }
 
   basicEffect = effect((onCleanup) => {
